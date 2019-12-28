@@ -2,7 +2,9 @@ const express = require('express')
 
 const Recipes = require('./recipes-model')
 
-const router = express.Router()
+const router = express.Router({
+    mergeParams: true
+})
 
 router.get('/', (req, res, next) => {
     Recipes.getRecipes()
@@ -30,7 +32,7 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
-router.get('/:id/ingredients', (req, res, next) => {
+router.get('/:id/shoppingList', (req, res, next) => {
     const { id } = req.params;
 
     Recipes.getShoppingList(id)
@@ -67,5 +69,7 @@ router.get('/:id/instructions', (req, res, next) => {
         next(err)
     })
 })
+
+
 
 module.exports = router;
