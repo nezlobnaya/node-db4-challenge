@@ -2,9 +2,7 @@ const express = require('express')
 
 const Recipes = require('./recipes-model')
 
-const router = express.Router({
-    mergeParams: true
-})
+const router = express.Router()
 
 router.get('/', (req, res, next) => {
     Recipes.getRecipes()
@@ -69,7 +67,5 @@ router.get('/:id/instructions', (req, res, next) => {
         next(err)
     })
 })
-
-
 
 module.exports = router;

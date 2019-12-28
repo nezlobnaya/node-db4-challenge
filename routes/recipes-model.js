@@ -41,7 +41,7 @@ function getInstructions(recipe_id) {
 }
 
 function getAllRecipesByIngredient(ingredient_id) {
-    return db('recipes as r', 'ri.ingredient_id')
+    return db('recipes as r')
         .select('r.recipe_name')
         .join('ingredients as i', 'i.id', 'ri.ingredient_id')
         .join('recipes_ingredients as ri', 'ri.recipe_id', 'r.id' )
